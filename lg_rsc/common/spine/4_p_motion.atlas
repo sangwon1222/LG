@@ -1,0 +1,48 @@
+
+4_p_motion.png
+size: 971,282
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+4_arm_l
+  rotate: false
+  xy: 603, 9
+  size: 287, 76
+  orig: 287, 81
+  offset: 0, 1
+  index: -1
+4_cha_arm_r
+  rotate: true
+  xy: 433, 7
+  size: 273, 168
+  orig: 273, 169
+  offset: 0, 0
+  index: -1
+4_cha_body
+  rotate: true
+  xy: 226, 2
+  size: 278, 205
+  orig: 312, 217
+  offset: 5, 6
+  index: -1
+4_cha_face1
+  rotate: false
+  xy: 603, 87
+  size: 184, 193
+  orig: 194, 206
+  offset: 5, 6
+  index: -1
+4_cha_face2
+  rotate: true
+  xy: 789, 96
+  size: 184, 180
+  orig: 194, 206
+  offset: 5, 6
+  index: -1
+4_cha_leg
+  rotate: true
+  xy: 2, 6
+  size: 274, 222
+  orig: 286, 233
+  offset: 6, 5
+  index: -1

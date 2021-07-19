@@ -1,0 +1,69 @@
+
+6_p_motion.png
+size: 602,1037
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+6_cha_arm_l
+  rotate: false
+  xy: 2, 64
+  size: 319, 333
+  orig: 319, 333
+  offset: 0, 0
+  index: -1
+6_cha_arm_r_b
+  rotate: false
+  xy: 407, 710
+  size: 186, 325
+  orig: 187, 326
+  offset: 1, 1
+  index: -1
+6_cha_arm_r_t
+  rotate: false
+  xy: 323, 9
+  size: 214, 137
+  orig: 241, 163
+  offset: 11, 5
+  index: -1
+6_cha_body
+  rotate: true
+  xy: 407, 522
+  size: 186, 193
+  orig: 220, 198
+  offset: 8, 2
+  index: -1
+6_cha_haead
+  rotate: false
+  xy: 323, 148
+  size: 272, 249
+  orig: 278, 250
+  offset: 2, 0
+  index: -1
+6_cha_leg_l
+  rotate: false
+  xy: 493, 430
+  size: 91, 90
+  orig: 93, 94
+  offset: 0, 2
+  index: -1
+6_cha_leg_r
+  rotate: false
+  xy: 407, 405
+  size: 84, 115
+  orig: 90, 116
+  offset: 4, 0
+  index: -1
+6_cha_sh
+  rotate: true
+  xy: 2, 399
+  size: 636, 403
+  orig: 646, 421
+  offset: 5, 5
+  index: -1
+6_egg
+  rotate: false
+  xy: 2, 2
+  size: 51, 60
+  orig: 61, 70
+  offset: 5, 5
+  index: -1

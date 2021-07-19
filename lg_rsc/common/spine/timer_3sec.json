@@ -1,0 +1,139 @@
+{
+"skeleton": {
+	"hash": "CVc4ELXy6WjUePQEF+CRwm5I7aY",
+	"spine": "3.8.99",
+	"x": -72.5,
+	"y": -72.5,
+	"width": 145,
+	"height": 145,
+	"images": "./footage/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "point", "parent": "root", "y": 66.19 },
+	{ "name": "point2", "parent": "root", "y": 54.15 }
+],
+"slots": [
+	{ "name": "timer_point", "bone": "point", "attachment": "timer_point" },
+	{ "name": "timer_point2", "bone": "point2", "attachment": "timer_point" },
+	{ "name": "timer_mask", "bone": "root", "attachment": "timer_mask" },
+	{ "name": "timer_line", "bone": "root", "attachment": "timer_line" },
+	{ "name": "point_guide", "bone": "root", "attachment": "point_guide" }
+],
+"path": [
+	{
+		"name": "point_guide",
+		"bones": [ "point" ],
+		"target": "point_guide",
+		"position": 0.8968,
+		"spacing": 100
+	}
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"point_guide": {
+				"point_guide": {
+					"type": "path",
+					"lengths": [ 59.02, 114.72, 171.05, 225.72, 283.33, 337.23, 350.07 ],
+					"vertexCount": 21,
+					"vertices": [ -16.26, 53.97, -0.04, 54.15, 25.48, 54.42, 42.54, 37.88, 48.61, 25.75, 59.33, 4.35, 55.01, -15.83, 47.44, -27.66, 40.04, -39.22, 27.53, -53.82, 0.35, -53.56, -20.94, -53.36, -36.3, -41.61, -44.95, -27.24, -56.36, -8.28, -53.33, 14.68, -44.77, 27.79, -33.65, 44.81, -15.38, 54.38, -0.02, 54.14, 3.05, 54.09 ]
+				}
+			},
+			"timer_line": {
+				"timer_line": { "width": 145, "height": 145 }
+			},
+			"timer_mask": {
+				"timer_mask": {
+					"type": "clipping",
+					"end": "timer_mask",
+					"vertexCount": 8,
+					"vertices": [ -77.43, -45.91, -77.19, 43.7, 0.17, 88.78, -0.01, -0.03, -0.02, 89.38, 77.66, 43.88, 77.71, -45.87, -0.18, -90.66 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"timer_point": {
+				"timer_point": { "x": 0.02, "y": 0.3, "width": 10, "height": 10 }
+			},
+			"timer_point2": {
+				"timer_point": { "width": 10, "height": 10 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"timer_line": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.0333, "name": "timer_line" }
+				]
+			},
+			"timer_point": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.0333, "name": "timer_point" },
+					{ "time": 3, "name": null }
+				]
+			},
+			"timer_point2": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.0333, "name": "timer_point" },
+					{ "time": 3, "name": null }
+				]
+			}
+		},
+		"path": {
+			"point_guide": {
+				"position": [
+					{},
+					{ "time": 0.5, "position": 0.1692 },
+					{ "time": 1, "position": 0.3384 },
+					{ "time": 1.5, "position": 0.5076 },
+					{ "time": 2, "position": 0.6707 },
+					{ "time": 2.5, "position": 0.8338 },
+					{ "time": 3, "position": 1 }
+				]
+			}
+		},
+		"deform": {
+			"default": {
+				"timer_mask": {
+					"timer_mask": [
+						{
+							"vertices": [ 77.40759, 135.28842, 77.2355, 45.74484, -0.13132, 0.63682, 0, 0, 0, 0, -77.6778, 45.51089, -77.67965, 135.3237, 0.2865, 180.09433 ]
+						},
+						{
+							"time": 0.5,
+							"vertices": [ 155.14346, 89.80254, 154.98143, 0.14591, 77.53246, -44.81007, 0, 0, 0, 0, 0, 0, -0.01499, 89.75076, 77.90594, 134.53156 ]
+						},
+						{
+							"time": 1,
+							"vertices": [ 155.13252, 0.01081, 154.98148, -89.65688, 77.62944, -134.77287, 0, 0, 0, 0, 0, 0, 0, 0, 78.08783, 44.87777 ]
+						},
+						{
+							"time": 1.5,
+							"vertices": [ 77.24475, -44.74894, 77.02266, -134.32773, -0.36121, -179.40866 ]
+						},
+						{
+							"time": 2,
+							"offset": 2,
+							"vertices": [ -0.21994, -89.61977, -77.66383, -134.56268 ]
+						},
+						{
+							"time": 2.5,
+							"offset": 4,
+							"vertices": [ -77.33583, -45.09283 ]
+						},
+						{ "time": 3 }
+					]
+				}
+			}
+		}
+	}
+}
+}

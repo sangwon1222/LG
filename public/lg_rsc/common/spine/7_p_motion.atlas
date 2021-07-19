@@ -1,0 +1,111 @@
+
+7_p_motion.png
+size: 937,287
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+7_7_ml2
+  rotate: false
+  xy: 782, 161
+  size: 145, 124
+  orig: 155, 134
+  offset: 5, 5
+  index: -1
+7_cha_arm_l
+  rotate: true
+  xy: 500, 60
+  size: 225, 103
+  orig: 231, 106
+  offset: 6, 1
+  index: -1
+7_cha_arm_r
+  rotate: true
+  xy: 782, 5
+  size: 154, 110
+  orig: 157, 122
+  offset: 3, 8
+  index: -1
+7_cha_body
+  rotate: true
+  xy: 2, 2
+  size: 283, 278
+  orig: 307, 279
+  offset: 0, 0
+  index: -1
+7_cha_head
+  rotate: false
+  xy: 282, 59
+  size: 216, 226
+  orig: 226, 236
+  offset: 5, 5
+  index: -1
+7_cha_leg
+  rotate: false
+  xy: 605, 64
+  size: 175, 221
+  orig: 178, 222
+  offset: 3, 0
+  index: -1
+7_egg
+  rotate: true
+  xy: 581, 13
+  size: 45, 64
+  orig: 55, 74
+  offset: 5, 5
+  index: -1
+7_egg_mo
+  rotate: false
+  xy: 674, 37
+  size: 19, 25
+  orig: 33, 41
+  offset: 5, 10
+  index: -1
+7_m1
+  rotate: false
+  xy: 647, 7
+  size: 25, 26
+  orig: 35, 36
+  offset: 5, 5
+  index: -1
+7_m2
+  rotate: true
+  xy: 894, 15
+  size: 31, 33
+  orig: 41, 43
+  offset: 5, 5
+  index: -1
+7_m3
+  rotate: false
+  xy: 894, 48
+  size: 33, 32
+  orig: 43, 42
+  offset: 5, 5
+  index: -1
+7_m4
+  rotate: false
+  xy: 647, 35
+  size: 25, 27
+  orig: 35, 37
+  offset: 5, 5
+  index: -1
+7_m5
+  rotate: false
+  xy: 894, 82
+  size: 35, 35
+  orig: 45, 45
+  offset: 5, 5
+  index: -1
+7_m6
+  rotate: false
+  xy: 894, 119
+  size: 41, 40
+  orig: 51, 50
+  offset: 5, 5
+  index: -1
+7_ml1
+  rotate: false
+  xy: 282, 4
+  size: 297, 53
+  orig: 307, 63
+  offset: 5, 5
+  index: -1

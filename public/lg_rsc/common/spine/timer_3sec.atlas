@@ -1,0 +1,20 @@
+
+timer_3sec.png
+size: 131,121
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+timer_line
+  rotate: false
+  xy: 2, 2
+  size: 117, 117
+  orig: 145, 145
+  offset: 15, 14
+  index: -1
+timer_point
+  rotate: false
+  xy: 121, 111
+  size: 8, 8
+  orig: 10, 10
+  offset: 1, 1
+  index: -1
