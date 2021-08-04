@@ -127,7 +127,6 @@ export class Page12 extends SceneBase {
   async onInit() {
     window.onkeydown = async (evt: KeyboardEvent) => {
       if (evt.key == "+") {
-        console.log(evt.key);
         window.onkeydown = () => null;
         await LgApp.Handle.eopFlag(true);
       }
@@ -197,7 +196,6 @@ export class Page12 extends SceneBase {
             await this.tweenMotion(1);
             if (this.mOpenMatch.matchIdx === tMatchAry[i]) {
               //두번째 카드가 첫번째 카드와 같은 짝인경우를 나타낸다.
-              console.log("Match Ok");
               tCorrectSnd.play();
               // this.mExBoxAry[this.mOpenMatch.aryIdx].clearFlag = true;
               tPopUpSnd.play();
@@ -207,7 +205,6 @@ export class Page12 extends SceneBase {
               );
             } else {
               //두번째 카드가 첫번째 카드와 다른 짝인 경우를 나타낸다.
-              console.log("match Fail");
               tWrongSnd.play();
               tExBox.closeCard();
               this.mExBoxAry[this.mOpenMatch.aryIdx].closeCard();
@@ -263,7 +260,6 @@ export class Page12 extends SceneBase {
 
   //카드 클릭 방지를 나타낸다.
   private lockExBox(tVal: boolean) {
-    // console.log(`lockExBox =  ${tVal}`)
     for (let i = 0; i < 6; i++) {
       this.mExBoxAry[i].lockFlag = tVal;
 
@@ -417,11 +413,9 @@ export class Page12 extends SceneBase {
     if (this.mAffodunce === false) return;
     if (this.mClear) return;
 
-    // console.log(this.mAffodunce)
     // const tPosY = 600;
     this.mQuestExBoxAry = shuffleArray(this.mQuestExBoxAry);
 
-    // console.log(this.mQuestExBoxAry)
     const tIdx1 = this.mQuestExBoxAry[0];
     const tIdx2 = this.mQuestExBoxAry[1];
 

@@ -98,14 +98,12 @@ export class ThumbGroup extends PIXI.Sprite {
       thumb.interactive = true;
       thumb.buttonMode = true;
       thumb.on("pointertap", async () => {
-        gsap.delayedCall(0.25, async () => {
-          if (this.mMoveDistance < 50) {
-            await this.thumbInteractive(false);
-            await LgApp.Handle.popupGoScene(`page${i}`);
-            (this.parent.parent as Popup).hide();
-            await this.thumbInteractive(true);
-          }
-        });
+        if (this.mMoveDistance < 20) {
+          await this.thumbInteractive(false);
+          await LgApp.Handle.popupGoScene(`page${i}`);
+          await (this.parent.parent as Popup).hide();
+          await this.thumbInteractive(true);
+        }
       });
     }
   }
@@ -163,34 +161,29 @@ export class ThumbGroup extends PIXI.Sprite {
       .on("pointerupoutside", () => {
         flag = false;
       });
-    // .on("pointerout", () => {
-    //   flag = false;
-    // });
   }
 
-  update() {
-    let firstStrat = false;
-    for (const thum of this.mThumbAry) {
-      if (thum.index == LgApp.Handle.currentPage) {
-        let moveX = 0;
+  update(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      for (const thum of this.mThumbAry) {
+        if (thum.index == LgApp.Handle.currentPage) {
+          let moveX = 0;
 
-        if (thum.index == 1 || thum.index == 2 || thum.index == 3) {
-          moveX = 100;
+          if (thum.index == 1 || thum.index == 2 || thum.index == 3) {
+            moveX = 100;
+          } else {
+            moveX = -200 * thum.index;
+          }
+
+          gsap.to(this, { x: moveX, duration: 0.5, ease: "back" });
+
+          thum.showFocus(true);
         } else {
-          moveX = -200 * thum.index;
+          thum.showFocus(false);
         }
-
-        gsap.to(this, { x: moveX, duration: 0.5, ease: "back" });
-
-        thum.showFocus(true);
-        firstStrat = true;
-      } else {
-        thum.showFocus(false);
       }
-    }
-    if (firstStrat == false) {
-      this.mThumbAry[0].showFocus(true);
-    }
+      resolve();
+    });
   }
 }
 
@@ -240,8 +233,8 @@ export class Popup extends PIXI.Container {
       this.mClosePop.interactive = false;
       this.mClosePop.buttonMode = true;
       this.mBG.visible = false;
-      this.mClosePop.on("pointerdown", () => {
-        this.hide();
+      this.mClosePop.on("pointerdown", async () => {
+        await this.hide();
       });
       // 이전 버튼
       this.mPrevBtn = new PIXI.Sprite(
@@ -321,14 +314,14 @@ export class Popup extends PIXI.Container {
   }
 
   registBtnEvent() {
-    this.mArrow.on("pointertap", () => {
+    this.mArrow.on("pointertap", async () => {
       window["clickSnd"].play();
       if (this.mArrow.angle == 180) {
         // 팝업이 내려온다 (show)
-        this.show();
+        await this.show();
       } else {
         // 팝업이 올라간다 (hide)
-        this.hide();
+        await this.hide();
       }
     });
     this.disableSceneMove(false);
@@ -376,29 +369,39 @@ export class Popup extends PIXI.Container {
   }
 
   // 팝업이 올라간다 (hide)
-  hide() {
-    if (this.mClosePop.interactive == false) {
-      return;
-    }
-    gsap.to(this.mArrow, { angle: 180, duration: 0.25 }).delay(0.2);
-    gsap.to(this.mHeader, { y: -110, duration: 0.25 }).delay(0.2);
-    this.mClosePop.interactive = false;
-    this.mBG.visible = false;
-    this.mPrevBtn.visible = false;
-    this.mNextBtn.visible = false;
-    this.mThumbGroup.visible = false;
-    this.disableSceneMove(false);
+  hide(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.mClosePop.interactive = false;
+      this.mBG.visible = false;
+      this.mPrevBtn.visible = false;
+      this.mNextBtn.visible = false;
+      this.mThumbGroup.visible = false;
+      this.disableSceneMove(false);
+
+      gsap.to(this.mArrow, { angle: 180, duration: 0.25 });
+      gsap
+        .to(this.mHeader, { y: -110, duration: 0.25 })
+        .eventCallback("onComplete", () => {
+          resolve();
+        });
+    });
   }
 
   // 팝업이 내려온다 (show)
-  show() {
-    gsap.to(this.mArrow, { angle: 0, duration: 0.25 });
-    gsap.to(this.mHeader, { y: 0, duration: 0.25 });
-    this.mBG.visible = true;
-    this.mClosePop.interactive = true;
-    this.mThumbGroup.visible = true;
-    this.disableSceneMove(true);
-    this.prevNextReset();
+  show(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.mBG.visible = true;
+      this.mClosePop.interactive = true;
+      this.mThumbGroup.visible = true;
+      this.disableSceneMove(true);
+      this.prevNextReset();
+      gsap.to(this.mArrow, { angle: 0, duration: 0.25 });
+      gsap
+        .to(this.mHeader, { y: 0, duration: 0.25 })
+        .eventCallback("onComplete", () => {
+          resolve();
+        });
+    });
   }
 
   disableSceneMove(flag: boolean) {
@@ -411,10 +414,6 @@ export class Popup extends PIXI.Container {
     }
     this.mThumbGroup.interactive = flag;
     this.mBtnFlag = flag;
-    // this.mPrevBtn.interactive = flag;
-    // this.mPrevBtn.buttonMode = flag;
-    // this.mNextBtn.interactive = flag;
-    // this.mNextBtn.buttonMode = flag;
   }
 
   prevNextReset() {

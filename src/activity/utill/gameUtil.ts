@@ -15,7 +15,6 @@ export function getPos(target: any) {
       if (flag) {
         const pos = evt.data.global;
         target.position.set(pos.x, pos.y);
-        console.log(pos.x, pos.y);
       }
     })
     .on("pointerup", () => {
@@ -117,7 +116,6 @@ export function getColorByPoint(spr: PIXI.Sprite, globalPoint: PIXI.Point) {
   const dy = Math.round((tempPoint.y - y1 + tex.frame.y) * res);
   const num = dx + dy * colormap.width;
 
-  // // console.log("tempPoint:", tempPoint, "tex.frame:", tex.frame, "res:", res, "num:", num, "colormap.width:", colormap.width);
   return {
     r: data[num * 4],
     g: data[num * 4 + 1],

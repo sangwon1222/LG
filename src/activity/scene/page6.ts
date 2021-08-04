@@ -149,7 +149,6 @@ export class Page6 extends SceneBase {
 
       // thunder.on("pointermove", (evt: PIXI.InteractionEvent) => {
       //   const pos = evt.data.global;
-      //   console.log(pos.x, pos.y);
       //   thunder.position.set(pos.x, pos.y);
       // });
       // thumderAry.push(thunder);

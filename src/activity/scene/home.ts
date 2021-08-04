@@ -9,10 +9,10 @@ export class Home extends SceneBase {
     super("home");
   }
   async onInit() {
-    console.log("onInit");
+    //
   }
 
   async onStart() {
-    console.log("onStart");
+    //
   }
 }

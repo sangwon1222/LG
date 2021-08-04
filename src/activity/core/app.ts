@@ -154,10 +154,17 @@ export class LgApp extends PIXI.Application {
     this.addScene(new Page11());
     this.addScene(new Page12());
 
+    /**개발모드
+     * 처음 시작페이지를 조정
+     */
     // this.mCurrentPage = 3;
     // await this.goScene(`page${this.mCurrentPage}`, true);
 
-    this.mCurrentPage = 1;
+    /**상용모드
+     * 처음 시작페이지를 mainPage로 시작
+     */
+    this.mCurrentPage = 0;
+    await this.mPopup.update();
     this.goScene(`mainPage`, true);
 
     this.stage.interactive = true;
@@ -181,12 +188,11 @@ export class LgApp extends PIXI.Application {
         },
         timeout: 2000,
         active: () => {
-          // console.log(' font loaded')
           resolve();
         },
 
         fontloading: (fontname) => {
-          // // console.log('fontLoading', fontname)
+          //
         },
       });
     });
@@ -215,7 +221,7 @@ export class LgApp extends PIXI.Application {
   }
 
   async goScene(sceneName: string, nonBookMotion?: boolean) {
-    this.mPopup.hide();
+    await this.mPopup.hide();
     if (this.mCurrentSceneName == sceneName && !nonBookMotion) {
       return;
     }
@@ -232,12 +238,9 @@ export class LgApp extends PIXI.Application {
         sceneFlag = false;
         this.mSceneStage.x = 0;
 
-        // this.mCurrentPage = +page;
+        this.mCurrentPage = +page;
+        await this.mPopup.update();
         this.mCurrentSceneName = sceneName;
-
-        // sceneName.slice(0, 4) == "page"
-        //   ? this.mPopup.thumnailMode(true)
-        //   : this.mPopup.thumnailMode(false);
 
         this.mModalStage.addChild(this.mLoadingScene);
         await this.mLoadingScene.onInit();
@@ -251,19 +254,12 @@ export class LgApp extends PIXI.Application {
           await this.mLoadingScene.onEnd();
           this.mModalStage.removeChild(this.mLoadingScene);
         }
-
         if (nonBookMotion) {
           this.mSceneStage.removeChildren();
           this.mSceneStage.addChild(scene);
           await scene.onInit();
           await scene.onStart();
         } else {
-          const prevPage = this.mCurrentPage;
-
-          if (+page == prevPage) {
-            return;
-          }
-          this.mCurrentPage = +page;
           await scene.onInit();
 
           scene.x = config.w;
@@ -279,7 +275,6 @@ export class LgApp extends PIXI.Application {
               await scene.onStart();
             });
         }
-        await this.mPopup.update();
         break;
       }
     }
@@ -290,7 +285,10 @@ export class LgApp extends PIXI.Application {
   }
 
   async popupGoScene(sceneName: string) {
-    this.mPopup.hide();
+    await this.mPopup.hide();
+    if (this.mCurrentSceneName == sceneName) {
+      return;
+    }
     for (const scene of this.mSceneArray) {
       if (scene.sceneName == sceneName) {
         await gsap.globalTimeline.clear();
@@ -301,20 +299,18 @@ export class LgApp extends PIXI.Application {
         if (sceneName.length == 6) {
           page = sceneName.slice(-2);
         }
+
         const prevPage = this.mCurrentPage;
         if (+page == prevPage) {
           return;
         }
+
+        this.mCurrentPage = +page;
         await this.endScene();
 
         this.mModalStage.addChild(this.mLoadingScene);
         await this.mLoadingScene.onInit();
 
-        // sceneName.slice(0, 4) == "page"
-        //   ? this.mPopup.thumnailMode(true)
-        //   : this.mPopup.thumnailMode(false);
-
-        this.mCurrentPage = +page;
         this.mCurrentSceneName = sceneName;
         await this.mPopup.update();
 
@@ -391,10 +387,10 @@ export class LgApp extends PIXI.Application {
     await gsap.globalTimeline.clear();
     this.mSceneStage.removeChildren();
     this.mCurrentSceneName = "mainPage";
-    this.mCurrentPage = 1;
+    this.mCurrentPage = 0;
   }
 
   goFullScreen() {
-    // App.vue에서 overwhite
+    // App.vue에서 override
   }
 }

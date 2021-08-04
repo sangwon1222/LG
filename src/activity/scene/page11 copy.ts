@@ -150,7 +150,6 @@ export class Page11 extends SceneBase {
         tQuestSp.height
       );
       tHitAreaAry[tCorrectIdxAry[i]] = tQuestSp;
-      // console.log( tHitAreaAry)
     }
 
     const tCorrectSnd = ResourceManager.Handle.getCommon("correct.mp3").sound;
@@ -189,19 +188,14 @@ export class Page11 extends SceneBase {
         // const x = tAnswerBoxSp.toLocal(evt.data.global).x;
         // const y = tAnswerBoxSp.toLocal(evt.data.global).y;
 
-        // console.log(tHitAreaAry[i].hitArea);
-        // console.log(x, y)
         if (tHitAreaAry[i].hitArea.contains(x, y)) {
-          // console.log('Correct');
           tCorrectSnd.play();
           tHitAreaAry[i].alpha = 1;
           tAnswerBoxSp.visible = false;
           this.mQuestAry[i] = 1;
           this.clearCheck();
         } else {
-          // console.log('Wrong');
           tWrongSnd.play();
-          // console.log(tAnswerBoxSp.backupPos)
           tAnswerBoxSp.position.set(
             tAnswerBoxSp.backupPos.x,
             tAnswerBoxSp.backupPos.y
@@ -247,8 +241,6 @@ export class Page11 extends SceneBase {
     for (const tVal of this.mQuestAry) {
       if (tVal === 0) tClear = false;
     }
-    // console.log(this.mQuestAry)
-    // console.log(tClear)
     if (tClear) this.onClearMove();
   }
 
@@ -297,7 +289,6 @@ export class Page11 extends SceneBase {
     if (this.mAffodunce === false) return;
     if (this.mClear) return;
 
-    // console.log(this.mAffodunce)
     let tPosX = 0;
     const tPosY = 600;
     let tIdx = 0;

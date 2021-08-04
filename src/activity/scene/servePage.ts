@@ -41,9 +41,6 @@ export class ServePage extends SceneBase {
       .yoyo(true);
 
     this.mPlayBtn.on("pointertap", async () => {
-      // const bgm = ResourceManager.Handle.getCommon("bgm.mp3").sound;
-      // bgm.volume = 1;
-      // bgm.play();
       window["clickSnd"].play();
       gsap.delayedCall(window["clickSnd"].duration, async () => {
         await this.goScene("page1", true);

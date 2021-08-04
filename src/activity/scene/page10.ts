@@ -301,7 +301,6 @@ export class Page10 extends SceneBase {
     if (this.mAffodunce === false) return;
     if (this.mClear) return;
 
-    // console.log(this.mAffodunce)
     let tPosX = 0;
     const tPosY = 500;
 

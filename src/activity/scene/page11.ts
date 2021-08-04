@@ -215,10 +215,7 @@ export class Page11 extends SceneBase {
         // const x = tAnswerBoxSp.toLocal(evt.data.global).x;
         // const y = tAnswerBoxSp.toLocal(evt.data.global).y;
 
-        // console.log(tHitAreaAry[i].hitArea);
-        // console.log(x, y)
         if (tHitAreaAry[i].hitArea.contains(x, y)) {
-          // console.log('Correct');
           tCorrectSnd.play();
           tHitAreaAry[i].alpha = 1;
           tAnswerBoxSp.visible = false;
@@ -230,9 +227,7 @@ export class Page11 extends SceneBase {
             this.startTimeOut(5, true);
           }
         } else {
-          // console.log('Wrong');
           tWrongSnd.play();
-          // console.log(tAnswerBoxSp.backupPos)
           tAnswerBoxSp.position.set(
             tAnswerBoxSp.backupPos.x,
             tAnswerBoxSp.backupPos.y
@@ -346,7 +341,6 @@ export class Page11 extends SceneBase {
     if (this.mAffodunce === false) return;
     if (this.mClear) return;
 
-    // console.log(this.mAffodunce)
     let tPosX = 0;
     const tPosY = 600;
     let tIdx = 0;

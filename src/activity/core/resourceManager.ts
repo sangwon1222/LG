@@ -28,8 +28,8 @@ export class ResourceManager {
   private mProduct: {};
 
   constructor() {
-    // this.mUrl = config.resource;
-    this.mUrl = "../lg_rsc/";
+    this.mUrl = config.resource;
+    // this.mUrl = "../lg_rsc/";
     this.mCommon = {};
     this.mViewer = {};
     this.mProduct = {};
